@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="app.MainController">
+
+    <top>
+        <MenuBar>
+            <Menu text="%menu.language">
+                <MenuItem text="English"    onAction="#onLangEn"/>
+                <MenuItem text="Русский"    onAction="#onLangRu"/>
+                <MenuItem text="Македонски" onAction="#onLangMk"/>
+                <MenuItem text="Polski"     onAction="#onLangPl"/>
+            </Menu>
+
+            <Menu text="%menu.user">
+                <MenuItem fx:id="currentUserMenuItem" text="—"/>
+                <MenuItem text="%menu.logout" onAction="#onLogout"/>
+            </Menu>
+
+            <Menu text="%menu.commands">
+                <MenuItem text="%cmd.info"                  onAction="#onInfo"/>
+                <MenuItem text="%cmd.clear"                 onAction="#onClear"/>
+                <MenuItem text="%cmd.add_if_max"            onAction="#onAddIfMax"/>
+                <MenuItem text="%cmd.remove_by_id"          onAction="#onRemoveById"/>
+                <MenuItem text="%cmd.count_less_than_diff"  onAction="#onCountLessThanDifficulty"/>
+                <MenuItem text="%cmd.average_minimal_point" onAction="#onAverageOfMinimalPoint"/>
+                <MenuItem text="%cmd.min_by_id"             onAction="#onMinById"/>
+                <MenuItem text="%cmd.execute_script"        onAction="#onExecuteScript"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <center>
+        <VBox spacing="8">
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="filterField"
+                           promptText="%prompt.filter"
+                           onKeyReleased="#onFilterChanged"
+                           HBox.hgrow="ALWAYS"/>
+                <Button fx:id="prevPageButton" text="⟨⟨" />
+                <Label fx:id="pageLabel" text="1 / 1" />
+                <Button fx:id="nextPageButton" text="⟩⟩" />
+            </HBox>
+
+            <SplitPane orientation="VERTICAL">
+                <TableView fx:id="tableView">
+                    <columns>
+                        <TableColumn fx:id="colId"               text="%col.id"/>
+                        <TableColumn fx:id="colName"             text="%col.name"/>
+                        <TableColumn fx:id="colX"                text="%col.x"/>
+                        <TableColumn fx:id="colY"                text="%col.y"/>
+                        <TableColumn fx:id="colCreationDate"     text="%col.creationDate"/>
+                        <TableColumn fx:id="colMinimalPoint"     text="%col.minimalPoint"/>
+                        <TableColumn fx:id="colDescription"      text="%col.description"/>
+                        <TableColumn fx:id="colDifficulty"       text="%col.difficulty"/>
+                        <TableColumn fx:id="colAuthorName"       text="%col.authorName"/>
+                        <TableColumn fx:id="colAuthorWeight"     text="%col.authorWeight"/>
+                        <TableColumn fx:id="colAuthorEyeColor"   text="%col.authorEyeColor"/>
+                        <TableColumn fx:id="colAuthorHairColor"  text="%col.authorHairColor"/>
+                        <TableColumn fx:id="colNationality"      text="%col.nationality"/>
+                        <TableColumn fx:id="colOwner"            text="%col.owner"/>
+                    </columns>
+                </TableView>
+                <Canvas fx:id="scatterCanvas" />
+            </SplitPane>
+        </VBox>
+    </center>
+
+    <bottom>
+        <VBox fx:id="bottomVBox" spacing="8">
+            <Canvas fx:id="detailCanvas" height="200"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Button text="%btn.add"     onAction="#onAdd"/>
+                <Button text="%btn.update"  onAction="#onUpdate"/>
+                <Button text="%btn.remove"  onAction="#onRemove"/>
+                <Button text="%btn.refresh" onAction="#onRefresh"/>
+                <Label fx:id="statusLabel" HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

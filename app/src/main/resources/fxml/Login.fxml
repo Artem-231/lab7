@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.HBox?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="app.LoginController"
+      alignment="CENTER" spacing="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <ComboBox fx:id="langCombo" promptText="%login.langPrompt"/>
+    <Label    text="%login.title" style="-fx-font-size:16px;"/>
+    <TextField fx:id="usernameField" promptText="%login.username"/>
+    <PasswordField fx:id="passwordField" promptText="%login.password"/>
+
+    <HBox spacing="10">
+        <Button fx:id="loginButton"    text="%login.button.login"/>
+        <Button fx:id="registerButton" text="%login.button.register"/>
+    </HBox>
+
+    <Label fx:id="messageLabel" textFill="red"/>
+</VBox>
