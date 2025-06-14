@@ -135,11 +135,15 @@ public class PostgresLabWorkDao implements LabWorkDao {
                 Difficulty difficulty = dif == null ? null
                         : Difficulty.valueOf(dif);
 
+                String eyeStr = rs.getString("author_eye_color");
+                Color eye = (eyeStr == null || eyeStr.isEmpty())
+                        ? null
+                        : Color.valueOf(eyeStr);
+
                 Person author = new Person(
                         rs.getString("author_name"),
                         rs.getInt("author_weight"),
-                        rs.getString("author_eye_color").isEmpty()
-                                ? null : Color.valueOf(rs.getString("author_eye_color")),
+                        eye,
                         Color.valueOf(rs.getString("author_hair_color")),
                         Country.valueOf(rs.getString("author_nationality"))
                 );
